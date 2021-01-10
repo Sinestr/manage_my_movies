@@ -1,0 +1,5 @@
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\netcoreapp3.0\ManageMyMovies.csprojAssemblyReference.cache
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\netcoreapp3.0\Views\MainWindow.g.cs
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\netcoreapp3.0\App.g.cs
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\netcoreapp3.0\ManageMyMovies_MarkupCompile.cache
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\netcoreapp3.0\ManageMyMovies_MarkupCompile.lref

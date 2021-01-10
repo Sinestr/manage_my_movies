@@ -1,0 +1,70 @@
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ManageMyMovies.csprojAssemblyReference.cache
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\MainWindow.g.cs
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\App.g.cs
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ManageMyMovies_MarkupCompile.cache
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ManageMyMovies_MarkupCompile.lref
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\ManageMyMovies.exe
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\ManageMyMovies.deps.json
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\ManageMyMovies.runtimeconfig.json
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\ManageMyMovies.runtimeconfig.dev.json
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\ManageMyMovies.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\ref\ManageMyMovies.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\ManageMyMovies.pdb
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\ControlzEx.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\MahApps.Metro.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\Microsoft.Extensions.DependencyInjection.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\Microsoft.Xaml.Behaviors.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\Newtonsoft.Json.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\de\MahApps.Metro.resources.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\ManageMyMovies.MVVM.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\ManageMyMovies.MVVM.pdb
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\App.baml
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\MainWindow.baml
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ManageMyMovies.g.resources
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ManageMyMovies.GeneratedMSBuildEditorConfig.editorconfig
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ManageMyMovies.AssemblyInfoInputs.cache
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ManageMyMovies.AssemblyInfo.cs
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ManageMyMovies.csproj.CoreCompileInputs.cache
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ManageMyMovies.csproj.CopyComplete
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ManageMyMovies.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ref\ManageMyMovies.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ManageMyMovies.pdb
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ManageMyMovies.genruntimeconfig.cache
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ManageMyMovies.csprojAssemblyReference.cache
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\Views\MainWindow.g.cs
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\App.g.cs
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ManageMyMovies_MarkupCompile.cache
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ManageMyMovies_MarkupCompile.lref
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ManageMyMovies.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ref\ManageMyMovies.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ManageMyMovies.pdb
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\ManageMyMovies.exe
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\ManageMyMovies.deps.json
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\ManageMyMovies.runtimeconfig.json
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\ManageMyMovies.runtimeconfig.dev.json
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\ManageMyMovies.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\ref\ManageMyMovies.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\ManageMyMovies.pdb
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\ControlzEx.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\MahApps.Metro.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\Microsoft.Extensions.DependencyInjection.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\Microsoft.Xaml.Behaviors.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\Newtonsoft.Json.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\de\MahApps.Metro.resources.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\ManageMyMovies.MVVM.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\bin\Debug\net5.0-windows\ManageMyMovies.MVVM.pdb
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\App.baml
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\Resources\DataTemplates.baml
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\Views\MainWindow.baml
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ManageMyMovies.g.resources
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ManageMyMovies.GeneratedMSBuildEditorConfig.editorconfig
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ManageMyMovies.AssemblyInfoInputs.cache
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ManageMyMovies.AssemblyInfo.cs
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ManageMyMovies.csproj.CoreCompileInputs.cache
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ManageMyMovies.csproj.CopyComplete
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\ManageMyMovies.genruntimeconfig.cache
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\Views\SearchMovie.g.cs
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\Views\SearchMovie.baml

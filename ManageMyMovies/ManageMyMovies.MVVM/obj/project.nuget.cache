@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "+OnvyiJC6GPIIeHAvAJcNY7sL/cBM7eZNp5RcdBicozEghRaTpaNj25vkqka6VopHcwhKKr5VKZKHUL/Eqm4EA==",
+  "success": true,
+  "projectFilePath": "D:\\FORMATIONS\\MASTER - INGINERIE DES AFFAIRES\\C# .NET\\Architecture .net\\ManageMyMovies\\ManageMyMovies.MVVM\\ManageMyMovies.MVVM.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tangi\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

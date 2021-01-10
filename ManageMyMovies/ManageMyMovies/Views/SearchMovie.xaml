@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="ManageMyMovies.Views.SearchMovie"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+      xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+      xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:local="clr-namespace:ManageMyMovies.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/> <!-- Barre de recherche -->
+            <RowDefinition Height="*"/> <!-- Résultat de la recherche -->
+        </Grid.RowDefinitions>
+
+        <!-- Barre de recherche -->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0" x:Name="movie_title" Text="{Binding SelectedItem.Title}"/>
+            
+            <!-- Le paramètre de la commande est le texte qui va être présent dans le textbox : movie_title -->
+            <Button Grid.Column="1" Content="Rechercher" 
+                    Command="{Binding SearchCommand}"
+                    CommandParameter="{Binding Text, ElementName=movie_title}"/>
+        </Grid>
+
+        <!-- Résultat de la recherche -->
+        <ListBox  Grid.Row="1"
+                Grid.ColumnSpan="3"
+                x:Name="ListBoxItems" 
+                ItemsSource="{Binding ItemsSource}"
+                SelectedItem="{Binding SelectedItem}"
+                ItemTemplate="{StaticResource OmbdApiMovieTemplate}"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel IsItemsHost="True"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+    </Grid>
+</UserControl>

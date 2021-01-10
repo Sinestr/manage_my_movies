@@ -1,0 +1,9 @@
+Here is your key: 5ff6d345
+
+Please append it to all of your API requests,
+
+OMDb API: http://www.omdbapi.com/?i=tt3896198&apikey=5ff6d345
+
+Click the following URL to activate your key: http://www.omdbapi.com/apikey.aspx?VERIFYKEY=ae8e29ef-ec86-47ab-a59a-74f1743632a2
+
+If you did not make this request, please disregard this email.

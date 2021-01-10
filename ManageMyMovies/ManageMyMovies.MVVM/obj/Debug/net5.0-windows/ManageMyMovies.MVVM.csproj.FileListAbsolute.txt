@@ -1,0 +1,24 @@
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\bin\Debug\net5.0-windows\ManageMyMovies.MVVM.deps.json
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\bin\Debug\net5.0-windows\ManageMyMovies.MVVM.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\bin\Debug\net5.0-windows\ref\ManageMyMovies.MVVM.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\bin\Debug\net5.0-windows\ManageMyMovies.MVVM.pdb
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\net5.0-windows\ManageMyMovies.MVVM.csprojAssemblyReference.cache
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\net5.0-windows\ManageMyMovies.MVVM.GeneratedMSBuildEditorConfig.editorconfig
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\net5.0-windows\ManageMyMovies.MVVM.AssemblyInfoInputs.cache
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\net5.0-windows\ManageMyMovies.MVVM.AssemblyInfo.cs
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\net5.0-windows\ManageMyMovies.MVVM.csproj.CoreCompileInputs.cache
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\net5.0-windows\ManageMyMovies.MVVM.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\net5.0-windows\ref\ManageMyMovies.MVVM.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\Programmation Avancée dotNet\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\net5.0-windows\ManageMyMovies.MVVM.pdb
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\bin\Debug\net5.0-windows\ManageMyMovies.MVVM.deps.json
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\bin\Debug\net5.0-windows\ManageMyMovies.MVVM.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\bin\Debug\net5.0-windows\ref\ManageMyMovies.MVVM.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\bin\Debug\net5.0-windows\ManageMyMovies.MVVM.pdb
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\net5.0-windows\ManageMyMovies.MVVM.GeneratedMSBuildEditorConfig.editorconfig
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\net5.0-windows\ManageMyMovies.MVVM.AssemblyInfoInputs.cache
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\net5.0-windows\ManageMyMovies.MVVM.AssemblyInfo.cs
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\net5.0-windows\ManageMyMovies.MVVM.csproj.CoreCompileInputs.cache
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\net5.0-windows\ManageMyMovies.MVVM.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\net5.0-windows\ref\ManageMyMovies.MVVM.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\net5.0-windows\ManageMyMovies.MVVM.pdb
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\net5.0-windows\ManageMyMovies.MVVM.csprojAssemblyReference.cache

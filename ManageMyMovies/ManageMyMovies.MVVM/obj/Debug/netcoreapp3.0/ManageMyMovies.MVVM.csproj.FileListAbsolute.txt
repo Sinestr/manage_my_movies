@@ -1,0 +1,9 @@
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\bin\Debug\netcoreapp3.0\ManageMyMovies.MVVM.deps.json
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\bin\Debug\netcoreapp3.0\ManageMyMovies.MVVM.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\bin\Debug\netcoreapp3.0\ManageMyMovies.MVVM.pdb
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\netcoreapp3.0\ManageMyMovies.MVVM.csprojAssemblyReference.cache
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\netcoreapp3.0\ManageMyMovies.MVVM.AssemblyInfoInputs.cache
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\netcoreapp3.0\ManageMyMovies.MVVM.AssemblyInfo.cs
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\netcoreapp3.0\ManageMyMovies.MVVM.csproj.CoreCompileInputs.cache
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\netcoreapp3.0\ManageMyMovies.MVVM.dll
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\netcoreapp3.0\ManageMyMovies.MVVM.pdb

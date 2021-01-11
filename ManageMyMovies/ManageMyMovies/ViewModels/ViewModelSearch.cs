@@ -31,11 +31,10 @@ namespace ManageMyMovies.ViewModels
 
         #endregion
 
-
         #region Properties
 
         /// <summary>
-        ///     Obtient le titre du vue-modèle
+        /// Obtient le titre du vue-modèle
         /// </summary>
         public string Title => "Rechercher un film";
 
@@ -109,6 +108,10 @@ namespace ManageMyMovies.ViewModels
         #endregion
 
         #region AddCommand
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameter"></param>
         protected override void Add(object parameter) 
         {
 

@@ -1,6 +1,7 @@
 ﻿using ManageMyMovies.Models.Api;
 using ManageMyMovies.MVVM.Abstracts;
 using ManageMyMovies.MVVM.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,23 +15,15 @@ namespace ManageMyMovies.Models
     /// <summary>
     /// 
     /// </summary>
+    [JsonObject(MemberSerialization.OptOut)]
     public class UserMovieManagerContext : FileDataContext
     {
         #region Fields
         /// <summary>
         /// 
         /// </summary>
-        private ObservableCollection<UserWishlistMovie> _UserWihslistMovies;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private ObservableCollection<UserMovie> _UserMovies;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private ObservableCollection<MovieApi> _MovieApi;
+        [JsonProperty("MyMovies")]
+        private ObservableCollection<UserMovie> _MyMovies;
 
         #endregion
 
@@ -38,28 +31,10 @@ namespace ManageMyMovies.Models
         /// <summary>
         /// 
         /// </summary>
-        public ObservableCollection<UserWishlistMovie> UserWishlistMovies
+        public ObservableCollection<UserMovie> MyMovies
         {
-            get => this._UserWihslistMovies;
-            set => this.SetProperty(nameof(this.UserWishlistMovies), ref this._UserWihslistMovies, value);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public ObservableCollection<UserMovie> UserMovies
-        {
-            get => this._UserMovies;
-            set => this.SetProperty(nameof(this.UserMovies), ref this._UserMovies, value);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public ObservableCollection<MovieApi> MovieApi
-        {
-            get => this._MovieApi;
-            set => this.SetProperty(nameof(this.MovieApi), ref this._MovieApi, value);
+            get => this._MyMovies;
+            set => this.SetProperty(nameof(this.MyMovies), ref this._MyMovies, value);
         }
         #endregion
 
@@ -70,8 +45,7 @@ namespace ManageMyMovies.Models
         /// <param name="filePath"></param>
         public UserMovieManagerContext(string filePath) : base(filePath)
         {
-            this._UserWihslistMovies = new ObservableCollection<UserWishlistMovie>();
-            this._UserMovies = new ObservableCollection<UserMovie>();
+            this._MyMovies = new ObservableCollection<UserMovie>();
         }
         #endregion
 
@@ -88,17 +62,7 @@ namespace ManageMyMovies.Models
             if (typeof(T) == typeof(UserMovie))
             {
                 createdItem = new UserMovie();
-                this.UserMovies.Add(createdItem as UserMovie);
-            }
-            else if (typeof(T) == typeof(UserWishlistMovie))
-            {
-                createdItem = new UserWishlistMovie();
-                this.UserWishlistMovies.Add(createdItem as UserWishlistMovie);
-            }
-            else if (typeof(T) == typeof(MovieApi))
-            {
-                createdItem = new MovieApi();
-                this.MovieApi.Add(createdItem as MovieApi);
+                this.MyMovies.Add(createdItem as UserMovie);
             }
             else
             {
@@ -119,15 +83,7 @@ namespace ManageMyMovies.Models
 
             if (typeof(T) == typeof(UserMovie))
             {
-                result = this.UserMovies as ObservableCollection<T>;
-            }
-            else if (typeof(T) == typeof(UserWishlistMovie))
-            {
-                result = this.UserWishlistMovies as ObservableCollection<T>;
-            }
-            else if (typeof(T) == typeof(MovieApi))
-            {
-                result = this.MovieApi as ObservableCollection<T>;
+                result = this.MyMovies as ObservableCollection<T>;
             }
             else
             {
@@ -137,19 +93,6 @@ namespace ManageMyMovies.Models
             return result;
         }
 
-        [OnDeserialized]
-        private void OnDeserialized(StreamingContext context)
-        {
-            /*
-            this.BankAccountLines.ToList().ForEach(bal =>
-            {
-                bal.BankAccount = this.BankAccounts.FirstOrDefault(ba => ba.Identifier == bal.IdentifierBankAccount);
-                bal.BankAccount?.BankAccountLines?.Add(bal);
-                bal.Category = this.Categories.FirstOrDefault(ba => ba.Identifier == bal.IdentifierCategory);
-                bal.Category?.BankAccountLines?.Add(bal);
-            });
-            */
-        }
         #endregion
     }
 }

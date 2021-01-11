@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\TP Final\manage_my_movies\ManageMyMovies\ManageMyMovies\obj\Debug\net5.0-windows\
 ManageMyMovies
 none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
-D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\ManageMyMovies\ManageMyMovies\App.xaml
-31224342356
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\TP Final\manage_my_movies\ManageMyMovies\ManageMyMovies\App.xaml
+4935671308
 
-15-1772485900
-200717164848
-Resources\DataTemplates.xaml;Views\MainWindow.xaml;Views\SearchMovie.xaml;
+17-251431869
+2001554038297
+Resources\DataTemplates.xaml;Views\MainWindow.xaml;Views\MyMovies.xaml;Views\SearchMovie.xaml;
 
-False
+True
 

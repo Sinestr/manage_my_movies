@@ -22,6 +22,8 @@
             <!--#region menu principal-->
             <Menu Grid.Row="0" Grid.ColumnSpan="2">
                 <MenuItem Header="Fichier">
+                    <MenuItem Header="Sauvegarder"  Command="{Binding SaveCommand}"/>
+                    <Separator/>
                     <MenuItem Header="Quitter" Command="{Binding ExitCommand}"/>
                 </MenuItem>
             </Menu>

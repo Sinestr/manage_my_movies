@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OnfjyVWdCfKnjp/qgskpgdMpVLCKhXJagZ1eSOLw0gIYvdVl470eIwcN3eax2JMi03sSVtDHkYi53izRSRyu9g==",
+  "dgSpecHash": "cIcEgouTH7QCYHFq4rbqA+PppzXfssndBIpyasP5BvEfeSmyKLffXDzNJskjDA+ITJCiGHU6r/AETGPhOlxC7Q==",
   "success": true,
-  "projectFilePath": "D:\\FORMATIONS\\MASTER - INGINERIE DES AFFAIRES\\C# .NET\\Architecture .net\\ManageMyMovies\\ManageMyMovies\\ManageMyMovies.csproj",
+  "projectFilePath": "D:\\FORMATIONS\\MASTER - INGINERIE DES AFFAIRES\\C# .NET\\Architecture .net\\TP Final\\manage_my_movies\\ManageMyMovies\\ManageMyMovies\\ManageMyMovies.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tangi\\.nuget\\packages\\controlzex\\4.4.0\\controlzex.4.4.0.nupkg.sha512",
     "C:\\Users\\tangi\\.nuget\\packages\\mahapps.metro\\2.4.3\\mahapps.metro.2.4.3.nupkg.sha512",

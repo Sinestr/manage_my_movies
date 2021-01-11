@@ -28,6 +28,10 @@ namespace ManageMyMovies.ViewModels
         /// </summary>
         private IViewModelSearch _ViewModelSearch;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private IViewModelMyMovies _ViewModelMyMovies;
 
         /// <summary>
         /// Commande pour fermer l'application.
@@ -48,6 +52,15 @@ namespace ManageMyMovies.ViewModels
         /// <summary>
         /// 
         /// </summary>
+        public IViewModelMyMovies ViewModelMyMovies
+        {
+            get => this._ViewModelMyMovies;
+            private set => this.SetProperty(nameof(this.ViewModelMyMovies), ref this._ViewModelMyMovies, value);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public RelayCommand ExitCommand => this._ExitCommand;
 
         #endregion
@@ -61,6 +74,7 @@ namespace ManageMyMovies.ViewModels
         {
             this._ServiceProvider = serviceProvider;
             this._ViewModelSearch = this._ServiceProvider.GetService<IViewModelSearch>();
+            this._ViewModelMyMovies = this._ServiceProvider.GetService<IViewModelMyMovies>();
 
             this._ExitCommand = new RelayCommand(this.ExitApplication, this.CanExitApplication);
             this.LoadData();
@@ -75,7 +89,8 @@ namespace ManageMyMovies.ViewModels
         {
             this.ItemsSource = new ObservableCollection<IObservableObject>(new IObservableObject[]
             { 
-                this._ViewModelSearch
+                this._ViewModelSearch,
+                this._ViewModelMyMovies
             });
             this.SelectedItem = this._ViewModelSearch;
         }

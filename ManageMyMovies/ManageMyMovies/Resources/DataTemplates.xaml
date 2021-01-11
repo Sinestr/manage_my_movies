@@ -7,6 +7,9 @@
         <views:SearchMovie/>
     </DataTemplate>
 
+    <DataTemplate DataType="{x:Type viewModels:ViewModelMyMovies}">
+        <views:MyMovies/>
+    </DataTemplate>
 
     <DataTemplate x:Key="OmbdApiMovieTemplate" DataType="{x:Type viewModels:ViewModelSearch}">
         <Border Margin="5" 

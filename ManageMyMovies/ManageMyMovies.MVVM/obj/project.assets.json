@@ -58,11 +58,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\FORMATIONS\\MASTER - INGINERIE DES AFFAIRES\\C# .NET\\Architecture .net\\ManageMyMovies\\ManageMyMovies.MVVM\\ManageMyMovies.MVVM.csproj",
+      "projectUniqueName": "D:\\FORMATIONS\\MASTER - INGINERIE DES AFFAIRES\\C# .NET\\Architecture .net\\TP Final\\manage_my_movies\\ManageMyMovies\\ManageMyMovies.MVVM\\ManageMyMovies.MVVM.csproj",
       "projectName": "ManageMyMovies.MVVM",
-      "projectPath": "D:\\FORMATIONS\\MASTER - INGINERIE DES AFFAIRES\\C# .NET\\Architecture .net\\ManageMyMovies\\ManageMyMovies.MVVM\\ManageMyMovies.MVVM.csproj",
+      "projectPath": "D:\\FORMATIONS\\MASTER - INGINERIE DES AFFAIRES\\C# .NET\\Architecture .net\\TP Final\\manage_my_movies\\ManageMyMovies\\ManageMyMovies.MVVM\\ManageMyMovies.MVVM.csproj",
       "packagesPath": "C:\\Users\\tangi\\.nuget\\packages\\",
-      "outputPath": "D:\\FORMATIONS\\MASTER - INGINERIE DES AFFAIRES\\C# .NET\\Architecture .net\\ManageMyMovies\\ManageMyMovies.MVVM\\obj\\",
+      "outputPath": "D:\\FORMATIONS\\MASTER - INGINERIE DES AFFAIRES\\C# .NET\\Architecture .net\\TP Final\\manage_my_movies\\ManageMyMovies\\ManageMyMovies.MVVM\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"

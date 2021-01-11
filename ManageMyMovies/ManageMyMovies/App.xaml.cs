@@ -14,6 +14,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Markup;
+using System.IO;
 
 namespace ManageMyMovies
 {
@@ -28,11 +29,15 @@ namespace ManageMyMovies
 
             ServiceCollection serviceCollection = new ServiceCollection();
 
+            string dataJsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"DataJson\\my_movies.json");
+
             //Création du contexte de données de l'application.
-            serviceCollection.AddSingleton<IDataContext, UserMovieManagerContext>(sp => FileDataContext.Load(@"C:\Temp\data.json", new UserMovieManagerContext(@"C:\Temp\data.json")));
+            serviceCollection.AddSingleton<IDataContext, UserMovieManagerContext>(sp => FileDataContext.Load(dataJsonPath, new UserMovieManagerContext(dataJsonPath)));
+
             //Création du vue-modèle principal.
             serviceCollection.AddTransient<IViewModelMain, ViewModelMain>(sp => new ViewModelMain(sp));
             serviceCollection.AddTransient<IViewModelSearch, ViewModelSearch>(sp => new ViewModelSearch(sp.GetService<IDataContext>()));
+            serviceCollection.AddTransient<IViewModelMyMovies, ViewModelMyMovies>(sp => new ViewModelMyMovies(sp.GetService<IDataContext>()));
 
             ServiceProvider serviceProvider = serviceCollection.BuildServiceProvider();
 

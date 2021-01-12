@@ -20,6 +20,11 @@ namespace ManageMyMovies.ViewModels.Abstracts
         /// </summary>
         public IViewModelSearch ViewModelSearch { get; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public IViewModelMyMovies ViewModelMyMovies { get; }
+
         #endregion
     }
 }

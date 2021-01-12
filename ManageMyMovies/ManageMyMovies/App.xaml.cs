@@ -29,9 +29,8 @@ namespace ManageMyMovies
 
             ServiceCollection serviceCollection = new ServiceCollection();
 
-            string dataJsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"DataJson\\my_movies.json");
-
             //Création du contexte de données de l'application.
+            string dataJsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"DataJson\\my_movies.json");
             serviceCollection.AddSingleton<IDataContext, UserMovieManagerContext>(sp => FileDataContext.Load(dataJsonPath, new UserMovieManagerContext(dataJsonPath)));
 
             //Création du vue-modèle principal.

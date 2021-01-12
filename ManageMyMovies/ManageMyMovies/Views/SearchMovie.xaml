@@ -12,8 +12,10 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/> <!-- Barre de recherche -->
-            <RowDefinition Height="*"/> <!-- Résultat de la recherche -->
+            <RowDefinition Height="30"/>
+            <!-- Barre de recherche -->
+            <RowDefinition Height="*"/>
+            <!-- Résultat de la recherche -->
         </Grid.RowDefinitions>
 
         <!-- Barre de recherche -->
@@ -23,28 +25,107 @@
                 <ColumnDefinition Width="100"/>
             </Grid.ColumnDefinitions>
 
-            <TextBox Grid.Column="0" x:Name="movie_title" Text="{Binding SelectedItem.Title}"/>
-            
+            <TextBox Grid.Column="0" x:Name="movie_title" Text=""/>
+
             <!-- Le paramètre de la commande est le texte qui va être présent dans le textbox : movie_title -->
             <Button Grid.Column="1" Content="Rechercher" 
                     Command="{Binding SearchCommand}"
                     CommandParameter="{Binding Text, ElementName=movie_title}"/>
         </Grid>
 
-        <!-- Résultat de la recherche -->
-        <ListBox  Grid.Row="1"
-                Grid.ColumnSpan="3"
+        <Grid Grid.Row="1" x:Name="SearchContent">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.65*"/>
+                <ColumnDefinition Width="0.35*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Résultat de la recherche -->
+            <ListBox Grid.Column="0"
                 x:Name="ListBoxItems" 
                 ItemsSource="{Binding ItemsSource}"
-                SelectedItem="{Binding SelectedItem}"
-                ItemTemplate="{StaticResource OmbdApiMovieTemplate}"
+                SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel IsItemsHost="True"/>
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-        </ListBox>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Margin="5" 
+                        CornerRadius="10"
+                        HorizontalAlignment="Stretch">
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <!-- Poster -->
+                                    <ColumnDefinition Width="0.20*"/>
+                                    <!-- Description -->
+                                    <ColumnDefinition Width="0.70*"/>
+                                    <!-- Add/Delete Action -->
+                                    <ColumnDefinition Width="0.10*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Poster -->
+                                <Image Grid.Column="0" Source="{Binding Poster}" Height="150" Width="Auto"></Image>
+
+                                <!-- Description -->
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <!-- Title -->
+                                        <RowDefinition Height="Auto"/>
+                                        <!-- Year -->
+                                        <RowDefinition Height="Auto"/>
+                                        <!-- Type-->
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Title}" TextTrimming="CharacterEllipsis" Margin="2"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Year}" TextTrimming="CharacterEllipsis" Margin="2"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Genre}" TextTrimming="CharacterEllipsis" Margin="2"/>
+                                </Grid>
+
+                                <!-- Add/Delete Action -->
+                                <Button Grid.Column="2"  Content="+"
+                                        Command="{Binding Path=DataContext.AddCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
+                                        CommandParameter="{Binding ImdbID}"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <StackPanel Grid.Column="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <!-- Movie Detail -->
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <!-- Poster -->
+                            <RowDefinition Height="350"/>
+                            <!-- Description -->
+                            <RowDefinition Height="*"/>
+                            <!-- Production -->
+                            <RowDefinition Height="*"/>
+                            <!-- Runtime -->
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        
+                        <!-- Poster -->
+                        <Image Grid.Row="0" Source="{Binding SelectedItem.Poster}" Width="Auto" Margin="10"></Image>
+
+                        <!-- Description -->
+                        <TextBlock Grid.Row="1" Text="{Binding SelectedItem.Plot}" TextTrimming="CharacterEllipsis" TextWrapping="Wrap" TextAlignment="Center" Margin="2"/>
+                        
+                        <!-- Production -->
+                        <TextBlock Grid.Row="2" Text="{Binding SelectedItem.Production}" TextTrimming="CharacterEllipsis" TextWrapping="Wrap" TextAlignment="Center" Margin="10"/>
+
+                        <!-- Runtime -->
+                        <TextBlock Grid.Row="3" Text="{Binding SelectedItem.Runtime}" TextTrimming="CharacterEllipsis" TextWrapping="Wrap" TextAlignment="Center" Margin="10"/>
+
+                    </Grid>
+                </Grid>
+            </StackPanel>
+
+        </Grid> <!-- Fin Search Result -->
     </Grid>
 </UserControl>

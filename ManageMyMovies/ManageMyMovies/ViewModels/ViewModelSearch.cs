@@ -62,63 +62,6 @@ namespace ManageMyMovies.ViewModels
             this.ItemsSource = new ObservableCollection<AdvancedApiMovie>();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="recherche"></param>
-        public MovieApi BasicSearchOmdbapiMovie(string recherche)
-        {
-            string urlQuery = OMDBAPI_URL + "?s=" + recherche + "&apikey=" + API_KEY;
-
-            //Création de la requête pour récupérer les films recherchés par l'utilisateur
-            WebRequest query = HttpWebRequest.Create(urlQuery);
-            query.Method = "GET";
-            query.ContentType = "application/json";
-
-            HttpWebResponse myHttpWebResponse = (HttpWebResponse)query.GetResponse();
-            var responseStream = myHttpWebResponse.GetResponseStream();
-            var reader = new StreamReader(responseStream);
-            
-            MovieApi movieApi = JsonConvert.DeserializeObject<MovieApi>(reader.ReadToEnd());
-
-            return movieApi;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="BasicMovies"></param>
-        /// <returns></returns>
-        public RootOmdbApi GetAdvancedSearchOmdbapiMovies(ObservableCollection<Search> BasicMovies)
-        {
-            RootOmdbApi rootOmdbApi = new RootOmdbApi
-            {
-                AdvancedApiMovies = new ObservableCollection<AdvancedApiMovie>()
-            };
-
-            foreach (Search BasicMovie in BasicMovies)
-            {
-                string imdbId = BasicMovie.ImdbID;
-                string urlQuery = OMDBAPI_URL + "?i=" + imdbId + "&apikey=" + API_KEY;
-
-                //Création de la requête pour récupérer les films recherchés par l'utilisateur
-                WebRequest query = HttpWebRequest.Create(urlQuery);
-                query.Method = "GET";
-                query.ContentType = "application/json";
-
-                HttpWebResponse myHttpWebResponse = (HttpWebResponse)query.GetResponse();
-                var responseStream = myHttpWebResponse.GetResponseStream();
-                var reader = new StreamReader(responseStream);
-
-                AdvancedApiMovie advancedApiMovie = JsonConvert.DeserializeObject<AdvancedApiMovie>(reader.ReadToEnd());
-
-                rootOmdbApi.AdvancedApiMovies.Add(advancedApiMovie);
-            }
-
-            return rootOmdbApi;
-        }
-
-
         #region SearchCommand
 
         /// <summary>
@@ -139,7 +82,15 @@ namespace ManageMyMovies.ViewModels
             {
                 this.ItemsSource.Clear();
             }
-            this.ItemsSource = rootOmdbApi.AdvancedApiMovies;
+
+            if (research != null && research != "" && rootOmdbApi != null)
+            {
+                this.ItemsSource = rootOmdbApi.AdvancedApiMovies;
+            }
+            else
+            {
+                this.LoadData();
+            }
         }
 
         #endregion
@@ -148,17 +99,102 @@ namespace ManageMyMovies.ViewModels
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="parameter"> ImdbID du film que l'on veut ajouter </param>
+        /// <param name="parameter"> film que l'on veut ajouter à sa liste peronnelle de films </param>
         protected override void Add(object parameter) 
         {
-            Console.WriteLine(parameter.ToString());
-            /*
-            Search itemToAdd = this.DataContext.CreateItem<Search>();
-            this.ItemsSource.Insert(0, itemToAdd);
-            this.SelectedItem = itemToAdd;
-            */
+            if (parameter != null && parameter.ToString().Length > 0)
+            {
+                string dataJsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"DataJson\\my_movies_temp.json");
+                RootOmdbApi rootOmdbApi = JsonConvert.DeserializeObject<RootOmdbApi>(File.ReadAllText(dataJsonPath));
+
+                if (rootOmdbApi != null)
+                {
+
+                }
+                else
+                {
+                    ObservableCollection<AdvancedApiMovie> firstAdvancedApiMovies = new ObservableCollection<AdvancedApiMovie>();
+                    firstAdvancedApiMovies.Add(this.GetAdvancedOmdbapiMovieById(parameter.ToString()));
+                    rootOmdbApi = new RootOmdbApi
+                    {
+                        AdvancedApiMovies = firstAdvancedApiMovies
+                    };
+                }
+
+                File.WriteAllText(dataJsonPath, JsonConvert.SerializeObject(rootOmdbApi));
+            }
         }
-        
+
+        #endregion
+
+
+        #region ApiMethods
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="recherche"></param>
+        public MovieApi BasicSearchOmdbapiMovie(string recherche)
+        {
+            string urlQuery = OMDBAPI_URL + "?s=" + recherche + "&apikey=" + API_KEY;
+
+            //Création de la requête pour récupérer les films recherchés par l'utilisateur
+            WebRequest query = HttpWebRequest.Create(urlQuery);
+            query.Method = "GET";
+            query.ContentType = "application/json";
+
+            HttpWebResponse myHttpWebResponse = (HttpWebResponse)query.GetResponse();
+            var responseStream = myHttpWebResponse.GetResponseStream();
+            var reader = new StreamReader(responseStream);
+
+            MovieApi movieApi = JsonConvert.DeserializeObject<MovieApi>(reader.ReadToEnd());
+
+            return movieApi;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="BasicMovies"></param>
+        /// <returns></returns>
+        public RootOmdbApi GetAdvancedSearchOmdbapiMovies(ObservableCollection<Search> BasicMovies)
+        {
+            RootOmdbApi rootOmdbApi = new RootOmdbApi
+            {
+                AdvancedApiMovies = new ObservableCollection<AdvancedApiMovie>()
+            };
+
+            foreach (Search BasicMovie in BasicMovies)
+            {
+                string imdbId = BasicMovie.ImdbID;
+                AdvancedApiMovie advancedApiMovie = this.GetAdvancedOmdbapiMovieById(imdbId);
+                rootOmdbApi.AdvancedApiMovies.Add(advancedApiMovie);
+            }
+
+            return rootOmdbApi;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="imdbId"></param>
+        /// <returns></returns>
+        public AdvancedApiMovie GetAdvancedOmdbapiMovieById(string imdbId)
+        {
+            string urlQuery = OMDBAPI_URL + "?i=" + imdbId + "&apikey=" + API_KEY;
+
+            //Création de la requête pour récupérer les films recherchés par l'utilisateur
+            WebRequest query = HttpWebRequest.Create(urlQuery);
+            query.Method = "GET";
+            query.ContentType = "application/json";
+
+            HttpWebResponse myHttpWebResponse = (HttpWebResponse)query.GetResponse();
+            var responseStream = myHttpWebResponse.GetResponseStream();
+            var reader = new StreamReader(responseStream);
+
+            AdvancedApiMovie advancedApiMovie = JsonConvert.DeserializeObject<AdvancedApiMovie>(reader.ReadToEnd());
+            
+            return advancedApiMovie;
+        }
         #endregion
 
         #endregion

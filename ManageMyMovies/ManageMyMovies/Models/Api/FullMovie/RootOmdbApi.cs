@@ -18,6 +18,7 @@ namespace ManageMyMovies.Models.Api.FullMovie
         #region Fields
         private struct RootOmdbApiData
         {
+            [JsonProperty("AdvancedApiMovies")]
             public ObservableCollection<AdvancedApiMovie> AdvancedApiMovies { get; set; }
         }
 

@@ -104,29 +104,30 @@ namespace ManageMyMovies.ViewModels
         {
             if (parameter != null && parameter.ToString().Length > 0)
             {
-                string dataJsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"DataJson\\my_movies_temp.json");
-                RootOmdbApi rootOmdbApi = JsonConvert.DeserializeObject<RootOmdbApi>(File.ReadAllText(dataJsonPath));
+                string imdbId = parameter.ToString();
+                string dataTempJsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"DataJson\\my_movies_temp.json");
+                List<AdvancedApiMovie> advancedApiMovies = JsonConvert.DeserializeObject<List<AdvancedApiMovie>>(File.ReadAllText(dataTempJsonPath));
 
-                if (rootOmdbApi != null)
+                //check si il y a déjà un film ou non dans la collection temporaire de films
+                if (advancedApiMovies != null && advancedApiMovies.Count > 0)
                 {
-
+                    //check si le film qu'on veut ajouter n'est pas déjà présent dans la collection temporaire de films
+                    if (advancedApiMovies.Find(movie => movie.ImdbID == imdbId) == null)
+                    {
+                        advancedApiMovies.Add(this.GetAdvancedOmdbapiMovieById(imdbId));
+                    }
                 }
                 else
                 {
-                    ObservableCollection<AdvancedApiMovie> firstAdvancedApiMovies = new ObservableCollection<AdvancedApiMovie>();
-                    firstAdvancedApiMovies.Add(this.GetAdvancedOmdbapiMovieById(parameter.ToString()));
-                    rootOmdbApi = new RootOmdbApi
-                    {
-                        AdvancedApiMovies = firstAdvancedApiMovies
-                    };
+                    advancedApiMovies = new List<AdvancedApiMovie>();
+                    advancedApiMovies.Add(this.GetAdvancedOmdbapiMovieById(imdbId));
                 }
 
-                File.WriteAllText(dataJsonPath, JsonConvert.SerializeObject(rootOmdbApi));
+                File.WriteAllText(dataTempJsonPath, JsonConvert.SerializeObject(advancedApiMovies));
             }
         }
 
         #endregion
-
 
         #region ApiMethods
         /// <summary>

@@ -29,6 +29,10 @@ namespace ManageMyMovies
 
             ServiceCollection serviceCollection = new ServiceCollection();
 
+            //suppression des films se trouvants dans le fichier json des films temporaires
+            string dataTempJsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"DataJson\\my_movies_temp.json");
+            File.WriteAllText(dataTempJsonPath, "");
+
             //Création du contexte de données de l'application.
             string dataJsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"DataJson\\my_movies.json");
             serviceCollection.AddSingleton<IDataContext, UserMovieManagerContext>(sp => FileDataContext.Load(dataJsonPath, new UserMovieManagerContext(dataJsonPath)));
@@ -39,7 +43,6 @@ namespace ManageMyMovies
             serviceCollection.AddTransient<IViewModelMyMovies, ViewModelMyMovies>(sp => new ViewModelMyMovies(sp.GetService<IDataContext>()));
 
             ServiceProvider serviceProvider = serviceCollection.BuildServiceProvider();
-
             MainWindow window = new MainWindow();
             window.DataContext = serviceProvider.GetService<IViewModelMain>();
             window.Show();

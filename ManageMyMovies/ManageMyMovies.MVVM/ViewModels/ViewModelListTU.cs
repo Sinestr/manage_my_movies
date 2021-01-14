@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System;
 using System.Text;
+using System.IO;
 
 namespace ManageMyMovies.MVVM.ViewModels
 {
@@ -41,6 +42,11 @@ namespace ManageMyMovies.MVVM.ViewModels
         /// 
         /// </summary>
         private readonly RelayCommand _SearchCommand;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private readonly RelayCommand _SaveCommand;
 
         #endregion
 
@@ -79,6 +85,11 @@ namespace ManageMyMovies.MVVM.ViewModels
         /// </summary>
         public virtual RelayCommand SearchCommand => this._SearchCommand;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual RelayCommand SaveCommand => this._SaveCommand;
+
         #endregion
 
         #region Constructors
@@ -93,6 +104,7 @@ namespace ManageMyMovies.MVVM.ViewModels
             this._AddCommand = new RelayCommand(this.Add, this.CanAdd);
             this._DeleteCommand = new RelayCommand(this.Delete, this.CanDelete);
             this._SearchCommand = new RelayCommand(this.Search, this.CanSearch);
+            this._SaveCommand = new RelayCommand(this.Save, this.CanSave);
         }
 
         #endregion
@@ -172,6 +184,24 @@ namespace ManageMyMovies.MVVM.ViewModels
         /// <param name="parameter"></param>
         /// <returns></returns>
         protected virtual bool CanSearch(object parameter) => true;
+        #endregion
+
+        #region Save
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameter"></param>
+        protected virtual void Save(object parameter)
+        {
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        protected virtual bool CanSave(object parameter) => false;
         #endregion
 
         #endregion

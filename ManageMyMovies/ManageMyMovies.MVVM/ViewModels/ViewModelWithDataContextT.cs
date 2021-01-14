@@ -34,11 +34,6 @@ namespace ManageMyMovies.MVVM.ViewModels
         /// </summary>
         public IDataContext DataContext { get => this._DataContext; private set => this.SetProperty(nameof(this.DataContext), ref this._DataContext, value); }
 
-        /// <summary>
-        ///     Obtient la commande pour sauvegarder les données.
-        /// </summary>
-        public RelayCommand SaveCommand => this._SaveCommand;
-
         #endregion
 
         #region Constructors
@@ -50,7 +45,6 @@ namespace ManageMyMovies.MVVM.ViewModels
         public ViewModelWithDataContext(IDataContext dataContext)
         {
             this._DataContext = dataContext;
-            this._SaveCommand = new RelayCommand(this.Save, this.CanSave);
         }
 
         #endregion
@@ -64,26 +58,6 @@ namespace ManageMyMovies.MVVM.ViewModels
         {
 
         }
-
-        #region SaveCommand
-
-        /// <summary>
-        ///     Methode qui détermine si la commande <see cref="SaveCommand"/> peut être exécutée.
-        /// </summary>
-        /// <param name="parameter">Paramètre de la commande.</param>
-        /// <returns>Détermine si la commande peut être exécutée.</returns>
-        protected virtual bool CanSave(object parameter) => this.DataContext.CanSave();
-
-        /// <summary>
-        ///     Méthode d'exécution de la commande <see cref="SaveCommand"/>.
-        /// </summary>
-        /// <param name="parameter">Paramètre de la commande.</param>
-        protected virtual void Save(object parameter)
-        {
-            this.DataContext.Save();
-        }
-
-        #endregion
 
         #endregion
     }

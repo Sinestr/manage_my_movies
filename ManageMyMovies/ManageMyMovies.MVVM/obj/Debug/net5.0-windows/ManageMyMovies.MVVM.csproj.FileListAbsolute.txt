@@ -33,3 +33,4 @@ D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\TP Final
 D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\TP Final\manage_my_movies\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\net5.0-windows\ManageMyMovies.MVVM.dll
 D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\TP Final\manage_my_movies\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\net5.0-windows\ref\ManageMyMovies.MVVM.dll
 D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\TP Final\manage_my_movies\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\net5.0-windows\ManageMyMovies.MVVM.pdb
+D:\FORMATIONS\MASTER - INGINERIE DES AFFAIRES\C# .NET\Architecture .net\TP Final\manage_my_movies\ManageMyMovies\ManageMyMovies.MVVM\obj\Debug\net5.0-windows\ManageMyMovies.MVVM.csprojAssemblyReference.cache

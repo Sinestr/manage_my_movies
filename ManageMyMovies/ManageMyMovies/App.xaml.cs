@@ -26,12 +26,7 @@ namespace ManageMyMovies
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
-
-            ServiceCollection serviceCollection = new ServiceCollection();
-
-            //suppression des films se trouvants dans le fichier json des films temporaires
-            string dataTempJsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"DataJson\\my_movies_temp.json");
-            File.WriteAllText(dataTempJsonPath, "");
+            ServiceCollection serviceCollection = new ServiceCollection();  
 
             //Création du contexte de données de l'application.
             string dataJsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"DataJson\\my_movies.json");

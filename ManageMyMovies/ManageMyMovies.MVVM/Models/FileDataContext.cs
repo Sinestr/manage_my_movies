@@ -66,7 +66,7 @@ namespace ManageMyMovies.MVVM.Models
             where T : IObservableObject;
 
         /// <summary>
-        ///     Sauvegarde le contexte dans un fichier.
+        /// Sauvegarde le contexte dans un fichier.
         /// </summary>
         public virtual void Save()
         {

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ManageMyMovies.ViewModels
 {
-    public class ViewModelMyMovies : ViewModelList<UserMovieManagerContext, IDataContext>, IViewModelMyMovies
+    public class ViewModelMyMovies : ViewModelList<UserMovie, IDataContext>, IViewModelMyMovies
     {
         #region Fields
 
@@ -36,13 +36,6 @@ namespace ManageMyMovies.ViewModels
         #endregion
 
         #region Methods
-        /// <summary>
-        /// Méthode de chargement des données.
-        /// </summary>
-        public override void LoadData()
-        {
-            this.ItemsSource = new ObservableCollection<UserMovieManagerContext>();
-        }
 
         #region DeleteCommand
         /// <summary>

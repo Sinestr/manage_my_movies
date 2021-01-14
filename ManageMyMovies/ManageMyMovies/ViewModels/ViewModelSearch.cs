@@ -11,6 +11,8 @@ using System.Net;
 using System.IO;
 using Newtonsoft.Json;
 using ManageMyMovies.Models.Api.FullMovie;
+using ManageMyMovies.Models;
+using ManageMyMovies.MVVM.Models;
 
 namespace ManageMyMovies.ViewModels
 {
@@ -105,25 +107,20 @@ namespace ManageMyMovies.ViewModels
             if (parameter != null && parameter.ToString().Length > 0)
             {
                 string imdbId = parameter.ToString();
-                string dataTempJsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"DataJson\\my_movies_temp.json");
-                List<AdvancedApiMovie> advancedApiMovies = JsonConvert.DeserializeObject<List<AdvancedApiMovie>>(File.ReadAllText(dataTempJsonPath));
+                string dataTempJsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"DataJson\\my_movies.json");
+                UserMovieManagerContext userMovieManager = FileDataContext.Load<UserMovieManagerContext>(dataTempJsonPath, new UserMovieManagerContext(dataTempJsonPath));
 
-                //check si il y a déjà un film ou non dans la collection temporaire de films
-                if (advancedApiMovies != null && advancedApiMovies.Count > 0)
+                //check si il y a déjà un film ou non dans la collection de films
+                if (userMovieManager != null)
                 {
-                    //check si le film qu'on veut ajouter n'est pas déjà présent dans la collection temporaire de films
-                    if (advancedApiMovies.Find(movie => movie.ImdbID == imdbId) == null)
+                    var userMovieList = new List<UserMovie>(userMovieManager.MyMoviesLibrary);
+                    //check si le film qu'on veut ajouter n'est pas déjà présent dans la collection de films
+                    if (userMovieList.Find(movie => movie.ImdbID == imdbId) == null)
                     {
-                        advancedApiMovies.Add(this.GetAdvancedOmdbapiMovieById(imdbId));
+                        userMovieManager.MyMoviesLibrary.Add((UserMovie)this.GetAdvancedOmdbapiMovieById(imdbId, true));
                     }
                 }
-                else
-                {
-                    advancedApiMovies = new List<AdvancedApiMovie>();
-                    advancedApiMovies.Add(this.GetAdvancedOmdbapiMovieById(imdbId));
-                }
-
-                File.WriteAllText(dataTempJsonPath, JsonConvert.SerializeObject(advancedApiMovies));
+                userMovieManager.Save();
             }
         }
 
@@ -167,7 +164,7 @@ namespace ManageMyMovies.ViewModels
             foreach (Search BasicMovie in BasicMovies)
             {
                 string imdbId = BasicMovie.ImdbID;
-                AdvancedApiMovie advancedApiMovie = this.GetAdvancedOmdbapiMovieById(imdbId);
+                AdvancedApiMovie advancedApiMovie = (AdvancedApiMovie)this.GetAdvancedOmdbapiMovieById(imdbId);
                 rootOmdbApi.AdvancedApiMovies.Add(advancedApiMovie);
             }
 
@@ -179,7 +176,7 @@ namespace ManageMyMovies.ViewModels
         /// </summary>
         /// <param name="imdbId"></param>
         /// <returns></returns>
-        public AdvancedApiMovie GetAdvancedOmdbapiMovieById(string imdbId)
+        public object GetAdvancedOmdbapiMovieById(string imdbId, bool forMyMovies = false)
         {
             string urlQuery = OMDBAPI_URL + "?i=" + imdbId + "&apikey=" + API_KEY;
 
@@ -192,9 +189,19 @@ namespace ManageMyMovies.ViewModels
             var responseStream = myHttpWebResponse.GetResponseStream();
             var reader = new StreamReader(responseStream);
 
-            AdvancedApiMovie advancedApiMovie = JsonConvert.DeserializeObject<AdvancedApiMovie>(reader.ReadToEnd());
-            
-            return advancedApiMovie;
+            object result;
+            if (forMyMovies)
+            {
+                UserMovie userMovie = JsonConvert.DeserializeObject<UserMovie>(reader.ReadToEnd());
+                result = userMovie;
+            }
+            else
+            {
+                AdvancedApiMovie advancedApiMovie = JsonConvert.DeserializeObject<AdvancedApiMovie>(reader.ReadToEnd());
+                result = advancedApiMovie;
+            }
+
+            return result;
         }
         #endregion
 

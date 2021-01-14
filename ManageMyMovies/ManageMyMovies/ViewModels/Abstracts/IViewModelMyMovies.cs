@@ -12,7 +12,7 @@ namespace ManageMyMovies.ViewModels.Abstracts
     /// <summary>
     /// 
     /// </summary>
-    public interface IViewModelMyMovies : IViewModelList<UserMovieManagerContext, IDataContext>
+    public interface IViewModelMyMovies : IViewModelList<UserMovie, IDataContext>
     {
 
     }

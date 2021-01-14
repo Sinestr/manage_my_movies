@@ -20,10 +20,9 @@ namespace ManageMyMovies.Models
     {
         #region Fields
         /// <summary>
-        /// 
+        /// Collection des films ajoutés par l'utilisateur
         /// </summary>
-        [JsonProperty("MyMovies")]
-        private ObservableCollection<UserMovie> _MyMovies;
+        private ObservableCollection<UserMovie> _MyMoviesLibrary;
 
         #endregion
 
@@ -31,21 +30,21 @@ namespace ManageMyMovies.Models
         /// <summary>
         /// 
         /// </summary>
-        public ObservableCollection<UserMovie> MyMovies
+        public ObservableCollection<UserMovie> MyMoviesLibrary
         {
-            get => this._MyMovies;
-            set => this.SetProperty(nameof(this.MyMovies), ref this._MyMovies, value);
+            get => this._MyMoviesLibrary;
+            private set => this.SetProperty(nameof(this.MyMoviesLibrary), ref this._MyMoviesLibrary, value);
         }
         #endregion
 
         #region Constructors
         /// <summary>
-        /// 
+        /// Initialise une nouvelle instance de la classe <see cref="UserMovieManagerContext"/>.
         /// </summary>
         /// <param name="filePath"></param>
         public UserMovieManagerContext(string filePath) : base(filePath)
         {
-            this._MyMovies = new ObservableCollection<UserMovie>();
+            this._MyMoviesLibrary = new ObservableCollection<UserMovie>();
         }
         #endregion
 
@@ -62,7 +61,7 @@ namespace ManageMyMovies.Models
             if (typeof(T) == typeof(UserMovie))
             {
                 createdItem = new UserMovie();
-                this.MyMovies.Add(createdItem as UserMovie);
+                this._MyMoviesLibrary.Add(createdItem as UserMovie);
             }
             else
             {
@@ -83,7 +82,7 @@ namespace ManageMyMovies.Models
 
             if (typeof(T) == typeof(UserMovie))
             {
-                result = this.MyMovies as ObservableCollection<T>;
+                result = this.MyMoviesLibrary as ObservableCollection<T>;
             }
             else
             {

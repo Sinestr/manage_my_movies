@@ -17,11 +17,6 @@ namespace ManageMyMovies.MVVM.ViewModels.Abstracts
         /// </summary>
         IDataContext DataContext { get; }
 
-        /// <summary>
-        ///     Obtient la commande pour sauvegarder les données.
-        /// </summary>
-        RelayCommand SaveCommand { get; }
-
         #endregion
     }
 }

@@ -29,7 +29,7 @@
                 </Grid.RowDefinitions>
                 
                 <!-- Filtre By Title -->
-                <TextBox Grid.Row="0" x:Name="movie_title" Text=""/>
+                <TextBox Grid.Row="0" x:Name="movie_title" Text=""/> 
 
                 <Grid Grid.Row="1" Margin="10">
                     <Grid.ColumnDefinitions>
@@ -42,7 +42,7 @@
                     </Grid.ColumnDefinitions>
                     
                     <!-- Filter By Genre -->
-                    <ComboBox Grid.Column="0">
+                    <ComboBox Grid.Column="0" x:Name="filter_genre">
                         <ComboBoxItem IsSelected="True">Genre</ComboBoxItem>
                         <ComboBoxItem>Action</ComboBoxItem>
                         <ComboBoxItem>Adventure</ComboBoxItem>
@@ -53,14 +53,14 @@
 
                     <!-- Filter By Watched -->
                     <StackPanel Grid.Column="1" HorizontalAlignment="Center" Orientation="Horizontal" Width="Auto">
-                        <CheckBox IsThreeState="True" FlowDirection="RightToLeft">
+                        <CheckBox x:Name="filter_watched" IsThreeState="True" FlowDirection="RightToLeft">
                             <TextBlock FlowDirection="LeftToRight" Text="Déjà vu ?"/>
                         </CheckBox>
                     </StackPanel>
 
                     <!-- Filter By Favorites -->
                     <StackPanel Grid.Column="2" HorizontalAlignment="Center" Orientation="Horizontal" Width="Auto">
-                        <CheckBox IsThreeState="True" FlowDirection="RightToLeft">
+                        <CheckBox x:Name="filter_favorites" IsThreeState="True" FlowDirection="RightToLeft">
                             <TextBlock FlowDirection="LeftToRight" Text="Favoris"/>
                         </CheckBox>
                     </StackPanel>

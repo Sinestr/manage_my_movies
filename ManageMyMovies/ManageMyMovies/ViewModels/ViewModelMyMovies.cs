@@ -50,6 +50,17 @@ namespace ManageMyMovies.ViewModels
             this.ItemsSource = new ObservableCollection<UserMovie>(userMovieManager.MyMoviesLibrary);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public void SyncSourceAndJsonData()
+        {
+            string dataJsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"DataJson\\my_movies.json");
+            UserMovieManagerContext userMovieManager = FileDataContext.Load<UserMovieManagerContext>(dataJsonPath, new UserMovieManagerContext(dataJsonPath));
+            userMovieManager.MyMoviesLibrary = this.ItemsSource;
+            userMovieManager.Save();
+        }
+
         #region DeleteCommand
         /// <summary>
         /// 
@@ -65,11 +76,7 @@ namespace ManageMyMovies.ViewModels
                 {
                     this.ItemsSource.Remove(movieToDelete);
                     this.DataContext.GetItems<UserMovie>().Remove(movieToDelete);
-
-                    string dataJsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"DataJson\\my_movies.json");
-                    UserMovieManagerContext userMovieManager = FileDataContext.Load<UserMovieManagerContext>(dataJsonPath, new UserMovieManagerContext(dataJsonPath));
-                    userMovieManager.MyMoviesLibrary = this.ItemsSource;
-                    userMovieManager.Save();
+                    this.SyncSourceAndJsonData();
                 }
             }
         }
@@ -82,6 +89,20 @@ namespace ManageMyMovies.ViewModels
         /// <param name="parameter"></param>
         protected override void Search(object parameter)
         {
+            //recherche de l'utilisateur, récupérée dans la barre de recherche
+            //reformatage de la recherche avec Trim qui vient supprimer les caractères non voulus en début et fin de chaine
+            string researchTitle = parameter.ToString().ToLower().Trim();
+
+            if (researchTitle != "")
+            {
+                var matchedMovies = this.ItemsSource.Where(movie => movie.Title.ToLower().Contains(researchTitle));
+                this.ItemsSource = new ObservableCollection<UserMovie>(matchedMovies);
+            }
+            else
+            {
+                this.LoadData();
+            }
+
             Console.WriteLine("Toto");
         }
         #endregion
@@ -93,10 +114,7 @@ namespace ManageMyMovies.ViewModels
         /// <param name="parameter"></param>
         protected override void SaveUpdate(object parameter)
         {
-            string dataJsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"DataJson\\my_movies.json");
-            UserMovieManagerContext userMovieManager = FileDataContext.Load<UserMovieManagerContext>(dataJsonPath, new UserMovieManagerContext(dataJsonPath));
-            userMovieManager.MyMoviesLibrary = this.ItemsSource;
-            userMovieManager.Save();
+            this.SyncSourceAndJsonData();
         }
         #endregion
 

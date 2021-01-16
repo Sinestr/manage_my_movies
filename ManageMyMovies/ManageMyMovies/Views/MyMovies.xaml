@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="78"/>
             <!-- Barre de recherche -->
             <RowDefinition Height="*"/>
             <!-- Résultat de la recherche -->
@@ -21,14 +21,59 @@
                 <ColumnDefinition Width="100"/>
             </Grid.ColumnDefinitions>
 
-            <TextBox Grid.Column="0" x:Name="movie_title" Text=""/>
+            <!-- Filters -->
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <!-- Filtre By Title -->
+                <TextBox Grid.Row="0" x:Name="movie_title" Text=""/>
 
+                <Grid Grid.Row="1" Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <!-- Filter By Genre -->
+                        <ColumnDefinition Width="*"/>
+                        <!-- Filter By Watched -->
+                        <ColumnDefinition Width="180"/>
+                        <!-- Filter By Favorites -->
+                        <ColumnDefinition Width="180"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <!-- Filter By Genre -->
+                    <ComboBox Grid.Column="0">
+                        <ComboBoxItem IsSelected="True">Genre</ComboBoxItem>
+                        <ComboBoxItem>Action</ComboBoxItem>
+                        <ComboBoxItem>Adventure</ComboBoxItem>
+                        <ComboBoxItem>Comedy</ComboBoxItem>
+                        <ComboBoxItem>Drama</ComboBoxItem>
+                        <ComboBoxItem>Fantasy</ComboBoxItem>
+                    </ComboBox>
+
+                    <!-- Filter By Watched -->
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Center" Orientation="Horizontal" Width="Auto">
+                        <CheckBox IsThreeState="True" FlowDirection="RightToLeft">
+                            <TextBlock FlowDirection="LeftToRight" Text="Déjà vu ?"/>
+                        </CheckBox>
+                    </StackPanel>
+
+                    <!-- Filter By Favorites -->
+                    <StackPanel Grid.Column="2" HorizontalAlignment="Center" Orientation="Horizontal" Width="Auto">
+                        <CheckBox IsThreeState="True" FlowDirection="RightToLeft">
+                            <TextBlock FlowDirection="LeftToRight" Text="Favoris"/>
+                        </CheckBox>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            
             <!-- Le paramètre de la commande est le texte qui va être présent dans le textbox : movie_title -->
-            <Button Grid.Column="1" Content="Rechercher" 
+            <Button Grid.Column="1" Content="Rechercher" Height="Auto"
                     Command="{Binding SearchCommand}"
                     CommandParameter="{Binding Text, ElementName=movie_title}"/>
         </Grid>
 
+        <!-- My Movies List -->
         <Grid Grid.Row="1" x:Name="SearchContent">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.65*"/>
@@ -77,9 +122,9 @@
                                     <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Genre}" TextTrimming="CharacterEllipsis" Margin="2"/>
                                 </Grid>
 
-                                <!-- Add/Delete Action -->
-                                <Button Grid.Column="2"  Content="+"
-                                        Command="{Binding Path=DataContext.AddCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
+                                <!-- Delete Action -->
+                                <Button Grid.Column="2"  Content="-"
+                                        Command="{Binding Path=DataContext.DeleteCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
                                         CommandParameter="{Binding ImdbID}"/>
                             </Grid>
                         </Border>
@@ -87,6 +132,7 @@
                 </ListBox.ItemTemplate>
             </ListBox>
 
+            <!-- Details -->
             <StackPanel Grid.Column="1">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -104,6 +150,10 @@
                             <RowDefinition Height="*"/>
                             <!-- Runtime -->
                             <RowDefinition Height="*"/>
+                            <!-- Check Boxes -->
+                            <RowDefinition Height="*"/>
+                            <!-- Update Action -->
+                            <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
                         <!-- Poster -->
@@ -118,6 +168,31 @@
                         <!-- Runtime -->
                         <TextBlock Grid.Row="3" Text="{Binding SelectedItem.Runtime}" TextTrimming="CharacterEllipsis" TextWrapping="Wrap" TextAlignment="Center" Margin="10"/>
 
+                        <Grid Grid.Row="4" Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <!-- Watched movie -->
+                            <StackPanel Grid.Column="0" HorizontalAlignment="Center" Orientation="Horizontal" Width="Auto">
+                                <CheckBox IsChecked="{Binding SelectedItem.Watched}" IsThreeState="True" FlowDirection="RightToLeft">
+                                    <TextBlock FlowDirection="LeftToRight" Text="Déjà vu ?"/>
+                                </CheckBox>
+                            </StackPanel>
+                            
+                            <!-- Add To favorites -->
+                            <StackPanel Grid.Column="1" HorizontalAlignment="Center" Orientation="Horizontal" Width="Auto">
+                                <CheckBox IsChecked="{Binding SelectedItem.Favorite}" IsThreeState="True" FlowDirection="RightToLeft">
+                                    <TextBlock FlowDirection="LeftToRight" Text="Favoris"/>
+                                </CheckBox>
+                            </StackPanel>
+                        </Grid>
+                        
+                        <!-- SaveUpdate Action -->
+                        <Button Grid.Row="5"  Content="Sauvegarder mon film" Margin="5"
+                                Command="{Binding Path=DataContext.SaveUpdateCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
+                                CommandParameter="{Binding SelectedItem}"/>
                     </Grid>
                 </Grid>
             </StackPanel>

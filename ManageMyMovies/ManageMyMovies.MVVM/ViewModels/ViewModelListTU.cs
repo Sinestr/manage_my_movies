@@ -19,34 +19,34 @@ namespace ManageMyMovies.MVVM.ViewModels
         #region Fields
 
         /// <summary>
-        ///     Liste des personnes.
+        ///     Liste des films.
         /// </summary>
         private ObservableCollection<T> _ItemsSource;
 
         /// <summary>
-        ///     Personne sélectionnée.
+        ///     Film sélectionné.
         /// </summary>
         private T _SelectedItem;
 
         /// <summary>
-        ///     Commande pour ajouter une personne.
+        ///     Commande pour ajouter un film.
         /// </summary>
         private readonly RelayCommand _AddCommand;
 
         /// <summary>
-        ///     Commande pour supprimer une personne passée en paramètre ou la personne sélectionnée.
+        ///     Commande pour supprimer un film passé en paramètre ou le film sélectionné.
         /// </summary>
         private readonly RelayCommand _DeleteCommand;
 
         /// <summary>
-        /// 
+        ///     Commande pour rechercher une personne passée en paramètre ou la personne sélectionnée.
         /// </summary>
         private readonly RelayCommand _SearchCommand;
 
         /// <summary>
-        /// 
+        ///     Commande pour sauvegarder les attributs d'un film sélectionné
         /// </summary>
-        private readonly RelayCommand _SaveCommand;
+        private readonly RelayCommand _SaveUpdateCommand;
 
         #endregion
 
@@ -88,7 +88,7 @@ namespace ManageMyMovies.MVVM.ViewModels
         /// <summary>
         /// 
         /// </summary>
-        public virtual RelayCommand SaveCommand => this._SaveCommand;
+        public virtual RelayCommand SaveUpdateCommand => this._SaveUpdateCommand;
 
         #endregion
 
@@ -104,7 +104,7 @@ namespace ManageMyMovies.MVVM.ViewModels
             this._AddCommand = new RelayCommand(this.Add, this.CanAdd);
             this._DeleteCommand = new RelayCommand(this.Delete, this.CanDelete);
             this._SearchCommand = new RelayCommand(this.Search, this.CanSearch);
-            this._SaveCommand = new RelayCommand(this.Save, this.CanSave);
+            this._SaveUpdateCommand = new RelayCommand(this.SaveUpdate, this.CanSaveUpdate);
         }
 
         #endregion
@@ -143,7 +143,6 @@ namespace ManageMyMovies.MVVM.ViewModels
         #endregion
 
         #region DeleteCommand
-
         /// <summary>
         ///     Méthode d'exécution de la commande <see cref="Delete"/>.
         /// </summary>
@@ -168,7 +167,7 @@ namespace ManageMyMovies.MVVM.ViewModels
 
         #endregion
 
-        #region SearchMoveApi
+        #region SearchCommand
         /// <summary>
         /// 
         /// </summary>
@@ -186,22 +185,28 @@ namespace ManageMyMovies.MVVM.ViewModels
         protected virtual bool CanSearch(object parameter) => true;
         #endregion
 
-        #region Save
+        #region SaveUpdateCommand
         /// <summary>
-        /// 
+        ///     Méthode d'exécution de la commande <see cref="SaveUpdate"/>.
         /// </summary>
-        /// <param name="parameter"></param>
-        protected virtual void Save(object parameter)
+        /// <param name="parameter">Paramètre de la commande.</param>
+        protected virtual void SaveUpdate(object parameter)
         {
+            T itemToDelete = (T)parameter ?? this.SelectedItem;
 
+            if (itemToDelete != null)
+            {
+                this.ItemsSource.Remove(itemToDelete);
+                this.DataContext.GetItems<T>().Remove(itemToDelete);
+            }
         }
 
         /// <summary>
-        /// 
+        ///     Methode qui détermine si la commande <see cref="SaveUpdate"/> peut être exécutée.
         /// </summary>
-        /// <param name="parameter"></param>
-        /// <returns></returns>
-        protected virtual bool CanSave(object parameter) => false;
+        /// <param name="parameter">Paramètre de la commande.</param>
+        /// <returns>Détermine si la commande peut être exécutée.</returns>
+        protected virtual bool CanSaveUpdate(object parameter) => true;
         #endregion
 
         #endregion

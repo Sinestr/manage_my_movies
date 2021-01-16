@@ -12,6 +12,7 @@ using System.Text;
 using System.IO;
 using Newtonsoft.Json;
 using ManageMyMovies.Models;
+using ManageMyMovies.MVVM.Models;
 
 namespace ManageMyMovies.ViewModels
 {
@@ -110,7 +111,8 @@ namespace ManageMyMovies.ViewModels
             {
                 case nameof(this.SelectedItem):
                     (this.SelectedItem as IViewModelList<IDataContext>)?.LoadData();
-                    break;
+                break;
+                
                 default:
                     break;
             }

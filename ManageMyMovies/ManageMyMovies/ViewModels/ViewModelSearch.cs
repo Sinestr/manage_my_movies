@@ -108,7 +108,7 @@ namespace ManageMyMovies.ViewModels
             {
                 string imdbId = parameter.ToString();
                 string dataTempJsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"DataJson\\my_movies.json");
-                UserMovieManagerContext userMovieManager = FileDataContext.Load<UserMovieManagerContext>(dataTempJsonPath, new UserMovieManagerContext(dataTempJsonPath));
+                UserMovieManagerContext userMovieManager = FileDataContext.Load<UserMovieManagerContext>(dataTempJsonPath, new UserMovieManagerContext(dataTempJsonPath)); 
 
                 //check si il y a déjà un film ou non dans la collection de films
                 if (userMovieManager != null)

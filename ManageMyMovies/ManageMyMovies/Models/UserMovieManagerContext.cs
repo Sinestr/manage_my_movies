@@ -33,7 +33,7 @@ namespace ManageMyMovies.Models
         public ObservableCollection<UserMovie> MyMoviesLibrary
         {
             get => this._MyMoviesLibrary;
-            private set => this.SetProperty(nameof(this.MyMoviesLibrary), ref this._MyMoviesLibrary, value);
+            set => this.SetProperty(nameof(this.MyMoviesLibrary), ref this._MyMoviesLibrary, value);
         }
         #endregion
 
@@ -46,6 +46,7 @@ namespace ManageMyMovies.Models
         {
             this._MyMoviesLibrary = new ObservableCollection<UserMovie>();
         }
+
         #endregion
 
         #region Methods

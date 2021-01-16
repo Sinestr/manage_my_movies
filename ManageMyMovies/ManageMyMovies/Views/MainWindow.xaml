@@ -6,7 +6,7 @@
       xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
       xmlns:local="clr-namespace:ManageMyMovies.Views"
       mc:Ignorable="d" 
-      Title="Manage My Movies" Height="650" Width="900">
+      Title="Manage My Movies" Height="750" Width="950">
 
     <Grid>
         <Grid.RowDefinitions>

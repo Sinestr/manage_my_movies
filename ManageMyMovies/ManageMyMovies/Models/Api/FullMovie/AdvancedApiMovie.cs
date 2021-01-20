@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 namespace ManageMyMovies.Models.Api.FullMovie
 {
     /// <summary>
-    /// 
+    /// Classe regroupant les données d'un film avancé recherché sur omdbapi
+    /// Avec les 
     /// </summary>
     [JsonObject(MemberSerialization.OptOut)]
     public class AdvancedApiMovie : Entity

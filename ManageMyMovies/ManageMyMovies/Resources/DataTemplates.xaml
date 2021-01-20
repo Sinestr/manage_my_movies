@@ -2,13 +2,15 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:viewModels="clr-namespace:ManageMyMovies.ViewModels"
                     xmlns:views="clr-namespace:ManageMyMovies.Views">
-
+    
+    <!-- Association du viewModelSearch à sa vue -->
     <DataTemplate DataType="{x:Type viewModels:ViewModelSearch}">
         <views:SearchMovie/>
     </DataTemplate>
 
+    <!-- Association du viewModelMyMovies à sa vue -->
     <DataTemplate DataType="{x:Type viewModels:ViewModelMyMovies}">
         <views:MyMovies/>
     </DataTemplate>
-
+    
 </ResourceDictionary>

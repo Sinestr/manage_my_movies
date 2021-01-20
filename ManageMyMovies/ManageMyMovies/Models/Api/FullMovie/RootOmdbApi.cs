@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 namespace ManageMyMovies.Models.Api.FullMovie
 {
     /// <summary>
-    /// 
+    /// Classe de données réprésentant la racine de la structure de données 
+    /// d'une liste de films avancés par omdbapi
     /// </summary>
     [JsonObject(MemberSerialization.OptOut)]
     public class RootOmdbApi : Entity
@@ -23,19 +24,21 @@ namespace ManageMyMovies.Models.Api.FullMovie
         }
 
         /// <summary>
-        /// 
+        /// Sauvegarde de données au début de l'édition
+        /// Notamment utile lors d'utilisation de DataGrid
         /// </summary>
         RootOmdbApiData? _BackupRootOmdbApiData;
-        
+
         /// <summary>
-        /// 
+        /// Données atcuelles 
+        /// Notamment utile lors d'utilisation de DataGrid
         /// </summary>
         RootOmdbApiData _CurrentRootOmdbApiData;
         #endregion
 
         #region Properties
         /// <summary>
-        /// 
+        /// Obtient la liste des films avancés d'une recherche par omdbapi
         /// </summary>
         public ObservableCollection<AdvancedApiMovie> AdvancedApiMovies
         {
@@ -46,17 +49,14 @@ namespace ManageMyMovies.Models.Api.FullMovie
 
         #region Constructors
         /// <summary>
-        /// 
+        /// Initialise une nouvelle instance de la classe <see cref="RootOmdbApi"/>.
         /// </summary>
-        public RootOmdbApi()
-        {
-
-        }
+        public RootOmdbApi() { }
         #endregion
 
         #region Methods
         /// <summary>
-        /// 
+        /// Commence l'édition d'une entité.
         /// </summary>
         public override void BeginEdit()
         {
@@ -67,7 +67,7 @@ namespace ManageMyMovies.Models.Api.FullMovie
         }
 
         /// <summary>
-        /// 
+        /// Annule les modifications effectuées sur l'entité.
         /// </summary>
         public override void CancelEdit()
         {
@@ -80,7 +80,7 @@ namespace ManageMyMovies.Models.Api.FullMovie
         }
 
         /// <summary>
-        /// 
+        /// Valide les modifications effectuées sur l'entité.
         /// </summary>
         public override void EndEdit()
         {

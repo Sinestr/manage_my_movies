@@ -12,10 +12,10 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
             <!-- Barre de recherche -->
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
             <!-- Résultat de la recherche -->
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <!-- Barre de recherche -->

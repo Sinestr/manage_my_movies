@@ -1,19 +1,14 @@
-﻿using ManageMyMovies.Models.Api;
-using ManageMyMovies.MVVM.Abstracts;
+﻿using ManageMyMovies.MVVM.Abstracts;
 using ManageMyMovies.MVVM.Models;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ManageMyMovies.Models
 {
     /// <summary>
-    /// 
+    /// Classe représentant le contexte de données global sur lequel on s'appuie 
+    /// pour avoir une liste personnelle de films
     /// </summary>
     [JsonObject(MemberSerialization.OptOut)]
     public class UserMovieManagerContext : FileDataContext
@@ -28,7 +23,7 @@ namespace ManageMyMovies.Models
 
         #region Properties
         /// <summary>
-        /// 
+        /// Obtient la collection des films que l'utilisateur a ajouté dans sa liste personnelle
         /// </summary>
         public ObservableCollection<UserMovie> MyMoviesLibrary
         {
@@ -51,10 +46,11 @@ namespace ManageMyMovies.Models
 
         #region Methods
         /// <summary>
-        /// 
+        /// Créer un élément du type spécifié et l'ajoute au contexte de données.
+        /// Ici seul le UserMovie existe
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
+        /// <returns>Retourne un nouvel élément du type UserMovie</returns>
         public override T CreateItem<T>()
         {
             IObservableObject createdItem;
@@ -73,10 +69,10 @@ namespace ManageMyMovies.Models
         }
 
         /// <summary>
-        /// 
+        /// Obtient la collection des éléments du type spécifié.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
+        /// <returns>Collection des éléments de UserMovie.</returns>
         public override ObservableCollection<T> GetItems<T>()
         {
             ObservableCollection<T> result;

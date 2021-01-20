@@ -11,22 +11,24 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
             <Grid.RowDefinitions>
+                <!-- Top Menu principal -->
                 <RowDefinition Height="Auto"/>
+                <!-- Sous menus du vue-modèle Main -->
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <!--#region menu principal-->
+
+            <!-- Top Menu principal -->
             <Menu Grid.Row="0" Grid.ColumnSpan="2">
                 <MenuItem Header="Fichier">
                     <MenuItem Header="Quitter" Command="{Binding ExitCommand}"/>
                 </MenuItem>
             </Menu>
-            <!--#endregion -->
 
+            <!-- Sous menus du vue-modèle Main -->
             <TabControl Grid.Row="1" ItemsSource="{Binding ItemsSource}" SelectedItem="{Binding SelectedItem}">
                 <TabControl.ItemTemplate>
                     <DataTemplate>
@@ -35,6 +37,5 @@
                 </TabControl.ItemTemplate>
             </TabControl>
         </Grid>
-        
     </Grid>
 </mahapps:MetroWindow>

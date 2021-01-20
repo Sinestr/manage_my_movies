@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ManageMyMovies.Models.Api
 {
     /// <summary>
-    /// 
+    /// Classe de données réprésentant la racine de la structure de données d'une recherche par omdbapi
     /// </summary>
     [JsonObject(MemberSerialization.OptOut)]
     public class MovieApi : Entity
@@ -29,12 +29,14 @@ namespace ManageMyMovies.Models.Api
         }
 
         /// <summary>
-        /// 
+        /// Sauvegarde de données au début de l'édition
+        /// Notamment utile lors d'utilisation de DataGrid
         /// </summary>
         MovieApiData? _BackupMovieApiData;
 
         /// <summary>
-        /// 
+        /// Données atcuelles 
+        /// Notamment utile lors d'utilisation de DataGrid
         /// </summary>
         MovieApiData _CurrentMovieApiData;
 
@@ -42,7 +44,7 @@ namespace ManageMyMovies.Models.Api
 
         #region Properties
         /// <summary>
-        /// 
+        /// Obtient le liste des films retournés par la requête api
         /// </summary>
         public ObservableCollection<Search> Search
         {
@@ -51,7 +53,7 @@ namespace ManageMyMovies.Models.Api
         }
 
         /// <summary>
-        /// 
+        /// Obtient le nombre total de films retournés par une requête vers l'api
         /// </summary>
         public string TotalResults
         {
@@ -60,7 +62,7 @@ namespace ManageMyMovies.Models.Api
         }
 
         /// <summary>
-        /// 
+        /// Obtient la réponse de la requête api
         /// </summary>
         public string Response
         {
@@ -71,17 +73,14 @@ namespace ManageMyMovies.Models.Api
 
         #region Constructors
         /// <summary>
-        /// 
+        /// Initialise une nouvelle instance de la classe <see cref="MovieApi"/>.
         /// </summary>
-        public MovieApi()
-        {
-
-        }
+        public MovieApi() { }
         #endregion
 
         #region Methods
         /// <summary>
-        /// 
+        /// Commence l'édition d'une entité.
         /// </summary>
         public override void BeginEdit()
         {
@@ -92,7 +91,7 @@ namespace ManageMyMovies.Models.Api
         }
 
         /// <summary>
-        /// 
+        /// Annule les modifications effectuées sur l'entité.
         /// </summary>
         public override void CancelEdit()
         {
@@ -105,7 +104,7 @@ namespace ManageMyMovies.Models.Api
         }
 
         /// <summary>
-        /// 
+        /// Valide les modifications effectuées sur l'entité.
         /// </summary>
         public override void EndEdit()
         {
@@ -115,6 +114,5 @@ namespace ManageMyMovies.Models.Api
             }
         }
         #endregion
-
     }
 }

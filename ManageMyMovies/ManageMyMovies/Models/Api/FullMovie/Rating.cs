@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace ManageMyMovies.Models.Api.FullMovie
 {
     /// <summary>
-    /// 
+    /// Classe de données représentant une note d'un film avancé omdbapi
     /// </summary>
     [JsonObject(MemberSerialization.OptOut)]
     public class Rating : Entity
@@ -25,12 +25,14 @@ namespace ManageMyMovies.Models.Api.FullMovie
         }
 
         /// <summary>
-        /// 
+        /// Sauvegarde de données au début de l'édition
+        /// Notamment utile lors d'utilisation de DataGrid
         /// </summary>
         RatingData? _BackupRatingData;
-        
+
         /// <summary>
-        /// 
+        /// Données atcuelles 
+        /// Notamment utile lors d'utilisation de DataGrid
         /// </summary>
         RatingData _CurrentRatingData;
 
@@ -38,7 +40,7 @@ namespace ManageMyMovies.Models.Api.FullMovie
 
         #region Properties
         /// <summary>
-        /// 
+        /// Obtient la source de la notation (quel site, etc...)
         /// </summary>
         public string Source
         {
@@ -47,7 +49,7 @@ namespace ManageMyMovies.Models.Api.FullMovie
         }
 
         /// <summary>
-        /// 
+        /// Obtient la note du film
         /// </summary>
         public string Response
         {
@@ -59,17 +61,14 @@ namespace ManageMyMovies.Models.Api.FullMovie
 
         #region Constructors
         /// <summary>
-        /// 
+        /// Initialise une nouvelle instance de la classe <see cref="Rating"/>.
         /// </summary>
-        public Rating ()
-        {
-
-        }
+        public Rating () { }
         #endregion
 
         #region Methods
         /// <summary>
-        /// 
+        /// Commence l'édition d'une entité.
         /// </summary>
         public override void BeginEdit()
         {
@@ -80,7 +79,7 @@ namespace ManageMyMovies.Models.Api.FullMovie
         }
 
         /// <summary>
-        /// 
+        /// Annule les modifications effectuées sur l'entité.
         /// </summary>
         public override void CancelEdit()
         {
@@ -93,7 +92,7 @@ namespace ManageMyMovies.Models.Api.FullMovie
         }
 
         /// <summary>
-        /// 
+        /// Valide les modifications effectuées sur l'entité.
         /// </summary>
         public override void EndEdit()
         {

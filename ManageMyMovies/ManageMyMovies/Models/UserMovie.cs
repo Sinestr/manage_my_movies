@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace ManageMyMovies.Models
 {
     /// <summary>
-    /// 
+    /// Classe regroupant les données d'un film utilisateur
     /// </summary>
     [JsonObject(MemberSerialization.OptOut)]
     public class UserMovie : Entity

@@ -51,10 +51,10 @@ namespace ManageMyMovies.Models.Api.FullMovie
         /// <summary>
         /// Obtient la note du film
         /// </summary>
-        public string Response
+        public string Value
         {
             get => this._CurrentRatingData.Value;
-            set => this.SetProperty(nameof(this.Response), () => this._CurrentRatingData.Value, (v) => this._CurrentRatingData.Value = v, value);
+            set => this.SetProperty(nameof(this.Value), () => this._CurrentRatingData.Value, (v) => this._CurrentRatingData.Value = v, value);
         }
 
         #endregion

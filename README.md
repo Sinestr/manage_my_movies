@@ -21,6 +21,7 @@ Le modèle définit trois couches :
 - **Vue** : Interface utilisateur développée en langage `XAML` et `C#`
 - **Vue-modèle** : Logique de présentation développée en langage `C#`
 
+
 ## Modèle
 En théorie, le modèle `MVVM` découpe la partie modèle en trois partie :
 - **Modèle de présentation** : Classe de données compatible avec le système de binding. Prend en charge des éléments de présentation comme par exemple des propriétés calculées ou la validation de données.
@@ -120,3 +121,163 @@ Ce qui donne :
     - `Response` : Reponse de la requête (Booléen)    
     - `Watched` : Permet de savoir si le film a déjà été regardé
     - `Favorite` : Ajoute le film dans ses favoris
+    
+    
+## Vue-modèle
+### Injection des dépendances
+Les vues-modèles ont été développés sur le principe de la dépendance faible.
+Chaque vue-modèle ne connait donc pas l'instance concrète des autres vues-modèles ainsi que la classe concrète du contexte de données utilisés.
+La seule dépendance forte réside dans l'utilisation des classes concrètes du modèles de données.
+
+L'injection de dépendance nécessite pour chaque vue-modèle de déclarer une interface qui décrit le comportement attendu du vue-modèle.
+
+Les vues-modèles sont déclarés dans le répertoire `.\ViewModels\` et les interfaces dans `.\ViewModels\Abstracts\`
+
+L'injection des dépendances est réalisés de deux manières :
+- Passage de l'ensemble des dépendances par contructeur
+- Passage du `System.IServiceProvider` dans le constructeur pour permettre au vue-modèle de résoudre à tous moment ses dépendances.
+
+#### Passage de l'ensemble des dépendances par contructeur
+Par exemple, le vue-modèle `ViewModelSearch` ne dépend que d'un `IDataContext`.
+La résolution de cette dépendance n'est pas réalisée par le vue-modèle lui-même mais par la classe qui instancie le vue-modèle.
+
+``` csharp
+public ViewModelSearch(IDataContext dataContext) : base(dataContext)
+{
+    this.LoadData();
+}
+```
+
+``` csharp
+private void Application_Startup(object sender, StartupEventArgs e)
+{
+    FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
+    ServiceCollection serviceCollection = new ServiceCollection();  
+    [...]
+    serviceCollection.AddTransient<IViewModelSearch, ViewModelSearch>(sp => new ViewModelSearch(sp.GetService<IDataContext>()));
+    [...]
+}
+```
+
+#### Passage du `System.IServiceProvider` dans le constructeur
+Par exemple, le vue-modèle `ViewModelMain` dépend que directement d'un `IServiceProvider`.
+Ceci permet au vue-modèle ensuite de demander au fournisseur de service de résoudre ses dépendances.
+
+``` csharp
+public ViewModelMain(IServiceProvider serviceProvider) : base(serviceProvider.GetService<IDataContext>())
+{
+    //récupération des services initialisés dans l'app.xml
+    this._ServiceProvider = serviceProvider;
+
+    //initialisation des sous vue-modèles du viewModelMain
+    this._ViewModelSearch = this._ServiceProvider.GetService<IViewModelSearch>();
+    this._ViewModelMyMovies = this._ServiceProvider.GetService<IViewModelMyMovies>();
+    
+    this._ExitCommand = new RelayCommand(this.ExitApplication, this.CanExitApplication);
+    this.LoadData();
+}
+```
+
+``` csharp
+private void Application_Startup(object sender, StartupEventArgs e)
+{
+    FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
+    ServiceCollection serviceCollection = new ServiceCollection();  
+
+    //Création du contexte de données de l'application.
+    string dataJsonPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"DataJson\\my_movies.json");
+    serviceCollection.AddSingleton<IDataContext, UserMovieManagerContext>(sp => FileDataContext.Load(dataJsonPath, new UserMovieManagerContext(dataJsonPath)));
+
+    //Création du vue-modèle principal.
+    serviceCollection.AddTransient<IViewModelMain, ViewModelMain>(sp => new ViewModelMain(sp));
+    [...]
+}
+```
+
+#### Gestion des instances par le fournisseur de service
+L'ensemble des services des vues-modèles sont déclarés avec la méthode `AddTransient`, ce qui signifie qu'à chaque résolution, le fournisseur de service retourne une nouvelle instance du vue-modèle demandé.
+Par contre, le contexte de données doit être commun à l'ensemble de l'application, le service est donc déclaré avec la méthode `AddSingleton`, ce qui signifie qu'à chaque résolution, le fournisseur de service retoune l'instance unique du contexte de données.
+``` csharp
+private void Application_Startup(object sender, StartupEventArgs e)
+{
+    FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CultureInfo.CurrentCulture.IetfLanguageTag)));
+    ServiceCollection serviceCollection = new ServiceCollection();  
+    [...]
+    //Création du vue-modèle principal.
+    serviceCollection.AddTransient<IViewModelMain, ViewModelMain>(sp => new ViewModelMain(sp));
+    serviceCollection.AddTransient<IViewModelSearch, ViewModelSearch>(sp => new ViewModelSearch(sp.GetService<IDataContext>()));
+    serviceCollection.AddTransient<IViewModelMyMovies, ViewModelMyMovies>(sp => new ViewModelMyMovies(sp.GetService<IDataContext>()));
+
+    ServiceProvider serviceProvider = serviceCollection.BuildServiceProvider();
+
+    MainWindow window = new MainWindow();
+    window.DataContext = serviceProvider.GetService<IViewModelMain>();
+    window.Show();
+}
+```
+
+### Architecture
+Les vues-modèles respectent l'architecture suivante :
+
+``` xml
+<ViewModelMain>
+  <ViewModelMain.ItemsSource>
+    <ViewModelSearch/>
+    <ViewModelMyMovies/>
+  </ViewModelMain.ItemsSource>    
+</ViewModelMain>
+```
+
+### Vue-modèle `ViewModelMain`
+Ce vue-modèle hérite de la classe `ManageMyMovies.MVVM.ViewModels.ViewModelList<IObservableObject, IDataContext>`.
+
+Il dispose donc d'une collection observable `ItemsSource` et d'un `SelectedItem` de type `IObservableObject` ainsi que du contexte de données.
+Ce dernier ne sera pas réèlement utilisé puisque `ViewModelMain` est un vue-modèle structurel (utilisé pour structurer l'interface graphique).
+
+#### Fermeture de l'application
+Le vue-modèle expose et implémente la commande `ExitCommand` qui permet de fermer l'application :
+``` csharp
+public class ViewModelMain : ViewModelList<IObservableObject, IDataContext>, IViewModelMain
+{
+    #region Fields
+    [...]
+    private readonly RelayCommand _ExitCommand;
+
+    #endregion
+
+    #region Properties
+    [...]
+    public RelayCommand ExitCommand => this._ExitCommand;
+
+    #endregion
+
+    #region Constructors
+
+    public ViewModelMain(IServiceProvider serviceProvider)
+        : base(serviceProvider.GetService<IDataContext>())
+    {
+        [...]
+        this._ExitCommand = new RelayCommand(this.Exit, this.CanExit);
+        [...]
+    }
+
+    #endregion
+
+    #region Methods
+    [...]
+    #region ExitCommand
+
+    protected virtual bool CanExit(object parameter) => true;
+
+    protected virtual void Exit(object parameter)
+    {
+        App.Current.Shutdown(0);
+    }
+
+    #endregion
+
+    #endregion
+}
+```
+
+La commande est accessible dans le menu principal de l'application.

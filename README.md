@@ -236,6 +236,7 @@ Ce dernier ne sera pas réèlement utilisé puisque `ViewModelMain` est un vue-m
 
 #### Fermeture de l'application
 Le vue-modèle expose et implémente la commande `ExitCommand` qui permet de fermer l'application :
+
 ``` csharp
 public class ViewModelMain : ViewModelList<IObservableObject, IDataContext>, IViewModelMain
 {
@@ -252,15 +253,12 @@ public class ViewModelMain : ViewModelList<IObservableObject, IDataContext>, IVi
     #endregion
 
     #region Constructors
-
-    public ViewModelMain(IServiceProvider serviceProvider)
-        : base(serviceProvider.GetService<IDataContext>())
+    public ViewModelMain(IServiceProvider serviceProvider) : base(serviceProvider.GetService<IDataContext>())
     {
         [...]
         this._ExitCommand = new RelayCommand(this.Exit, this.CanExit);
         [...]
     }
-
     #endregion
 
     #region Methods
@@ -281,3 +279,108 @@ public class ViewModelMain : ViewModelList<IObservableObject, IDataContext>, IVi
 ```
 
 La commande est accessible dans le menu principal de l'application.
+
+#### Initialisation des vues-modèles enfants et présentation à la vue
+Le vue-modèle principal de l'application gère les deux vues-modèles utilisés par les deux onglets principaux :
+- `ViewModelMyMovies` : Onglet de la page de gestion de sa liste personnelle de films.
+- `ViewModelSearch` : Onglet de la page de recherche d'un nouveau film à partir de l'api Omdbapi. 
+
+Les vues-modèles enfants sont déclarés et exposés en tant que propriété dans `ViewModelMain` :
+
+``` csharp
+public class ViewModelMain : ViewModelList<IObservableObject, IDataContext>, IViewModelMain
+{
+    #region Fields
+    private IViewModelMyMovies _ViewModelMyMovies;
+    private IViewModelSearch _ViewModelSearch;
+    #endregion
+
+    #region Properties
+    public IViewModelMyMovies ViewModelMyMovies { get => this._ViewModelMyMovies; private set => this.SetProperty(nameof(this.ViewModelMyMovies), ref this._ViewModelMyMovies, value); }    
+    public IViewModelSearch ViewModelSearch { get => this._ViewModelSearch; private set => this.SetProperty(nameof(this.ViewModelSearch), ref this._ViewModelSearch, value); }
+    #endregion
+}
+```
+
+L'initialisation des vues-modèles est réalisée dans le constructeur de la classe :
+``` csharp
+public class ViewModelMain : ViewModelList<IObservableObject, IDataContext>, IViewModelMain
+{
+    public ViewModelMain(IServiceProvider serviceProvider) : base(serviceProvider.GetService<IDataContext>())
+    {
+        this._ServiceProvider = serviceProvider;
+        this._ViewModelSearch = this._ServiceProvider.GetService<IViewModelSearch>();
+        this._ViewModelMyMovies = this._ServiceProvider.GetService<IViewModelMyMovies>();
+        [...]
+        this.LoadData();
+    }
+}
+```
+
+Comme indiqué, le constructeur appel la méthode `void LoadData()` qui se charge d'initialiser la collection observable `ItemsSource` :
+``` csharp
+public class ViewModelMain : ViewModelList<IObservableObject, IDataContext>, IViewModelMain
+{
+    public override void LoadData()
+    {
+        this.ItemsSource = new ObservableCollection<IObservableObject>(new IObservableObject[]
+        { 
+            this._ViewModelSearch,
+            this._ViewModelMyMovies
+        });
+        this.SelectedItem = this._ViewModelSearch;
+    }
+}
+```
+
+Il est à noter que le comportement de la méthode `void LoadData()` de la classe parente (`ManageMyMovies.MVVM.ViewModels.ViewModelList<IObservableObject, IDataContext>`)
+est surchargé (sans appel de `base.LoadData()`).
+Par défaut, la méthode `base.LoadData()` appel la méthode `DataContext.GetItems<T>()` pour initailiser la collection observable `ItemsSource`.
+Les vues-modèles présentés dans `ItemsSource` par `ViewModelMain` ne font pas parti du modèle de données et n'ont pas d'existance dans le contexte de données, l'appel de `base.LoadData()` dans ce cas de figure génère donc une excepion.
+
+### Vue-modèle `ViewModelSearch`
+Ce vue-modèle hérite de la classe `ManageMyMovies.MVVM.ViewModels.ViewModelList<AdvancedApiMovie, IDataContext>`.
+Vue-modèle de la page de **recherche d'un nouveau film** à partir de l'api Omdbapi. 
+Ce vue-modèle permet aussi d'**ajouter un film recherché** à sa liste personnelle de films 
+(Consultables dans l'onglet dont le comportement est définit par ViewModelMyMovies) 
+est également en charge de gérer le vue-modèle des écritures, nottament en lui donnant le compte bancaire sélectionné.
+
+
+> Il est à notter que le vue-modèle enfant appel automatiquement la méthode `LoadData()` lorsque qu'on arrive sur l'onglet du `ViewModelSearch`.
+
+#### Gestion des commandes `SearchCommand` et `AddCommand`
+L'utilisateur doit pouvoir rechercher un film. 
+Ainsi, la commande `SearchCommand` va lui permettre de rechercher un film en tappant le titre (ou un partie) dans une barre de recherche.
+> La recherche s'éffectue que par le titre d'un film.
+
+**Comment se déroule une recherche de film vers l'API Omdbapi avec la command Search ?**
+
+On fait appel ici à deux requêtes vers le webservice Omdbapi pour obtenir notre résultat de recherche :
+
+- Par Recherche (Modèle associé : **`Search`**)
+    - `résultat attendu` : une liste de plusieurs films avec peu d'informations dessus.
+    - `exemple d'Url` : http://www.omdbapi.com/?s=fury&apikey=5ff6d345
+
+        | Paramètre       | Obligatoire | Description 
+        | -----           |-----        | -----
+        | s               | `OUI`       | Titre du film pour le rechercher
+     
+- Par ID ou par Titre (Modèle associé : **`AdvancedApiMovie`**)
+    - `résultat attendu` : Un film avec beaucoup d'informations dessus.
+    - `exemple d'Url` : http://www.omdbapi.com/?i=tt2713180&apikey=5ff6d345
+
+        | Paramètre       | Obligatoire | Description 
+        | -----           |-----        | -----
+        | i               | `Optionel`  | Un ImdbId valide
+
+L'idée ici, c'est que l'utilisateur puisse posséder beaucoup d'informations sur les films qu'il recherche.
+Par conséquent, l'appel seul de la `requete par recherche` ne suffit pas (aucune durée, description, etc...).
+C'est pourquoi, pour palier à ce manque d'information. On fait appel d'abord à la `requete par recherche`. 
+Puis, pour chacun des films retournés on fait appel à la requête par `requete par ID (ImdbId)`. 
+En effet, pour chaque film retourné par la `requete de recherche` on a accès à l'ImdbId du film.
+
+------------------
+Par ailleurs, à partir des films retournés par la commande de recherche. 
+L'utilisateur var pouvoir ajouter un film (avec beaucoup d'informations) à sa collection personnelle (un bouton est disponible pour chaque film retourné).
+> On ne peut pas ajouter deux fois le même film dans sa collection personnelle.
+> A chaque nouvel ajout, on **sauvegarde automatiquement la collection** personnelle de films.

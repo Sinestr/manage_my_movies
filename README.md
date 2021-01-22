@@ -8,6 +8,8 @@ le webservice proposé par [Omdbapi.com](http://www.omdbapi.com/).
 
 `ManageMyMovies` est une application `WPF net core 5.0`.
 
+git : https://github.com/Sinestr/manage_my_movies
+
 # Dépendances du projet
 - [Mahapps.Metro](https://github.com/MahApps/MahApps.Metro) : Librairie graphique `WPF`.
 - [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json) : Librairie de sérialisation au format `JSON`.

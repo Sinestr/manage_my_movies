@@ -426,3 +426,6 @@ Enfin, l'utilisateur est en mesure d'ajouter des informations sur un film. Comme
     
 - **`Renforcer le référencement`**  
     - Faire en sorte que sa collection de films soit organisée de telle sorte à ce que les favoris ressortent vers les premiers résultats, mélangés avec les derniers films ajoutés. 
+    
+    
+    

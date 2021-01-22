@@ -342,9 +342,7 @@ Les vues-modèles présentés dans `ItemsSource` par `ViewModelMain` ne font pas
 Ce vue-modèle hérite de la classe `ManageMyMovies.MVVM.ViewModels.ViewModelList<AdvancedApiMovie, IDataContext>`.
 Vue-modèle de la page de **recherche d'un nouveau film** à partir de l'api Omdbapi. 
 Ce vue-modèle permet aussi d'**ajouter un film recherché** à sa liste personnelle de films 
-(Consultables dans l'onglet dont le comportement est définit par ViewModelMyMovies) 
-est également en charge de gérer le vue-modèle des écritures, nottament en lui donnant le compte bancaire sélectionné.
-
+(Consultables dans l'onglet dont le comportement est définit par ViewModelMyMovies).
 
 > Il est à notter que le vue-modèle enfant appel automatiquement la méthode `LoadData()` lorsque qu'on arrive sur l'onglet du `ViewModelSearch`.
 
@@ -379,8 +377,52 @@ C'est pourquoi, pour palier à ce manque d'information. On fait appel d'abord à
 Puis, pour chacun des films retournés on fait appel à la requête par `requete par ID (ImdbId)`. 
 En effet, pour chaque film retourné par la `requete de recherche` on a accès à l'ImdbId du film.
 
-------------------
+-----
+
 Par ailleurs, à partir des films retournés par la commande de recherche. 
 L'utilisateur var pouvoir ajouter un film (avec beaucoup d'informations) à sa collection personnelle (un bouton est disponible pour chaque film retourné).
 > On ne peut pas ajouter deux fois le même film dans sa collection personnelle.
 > A chaque nouvel ajout, on **sauvegarde automatiquement la collection** personnelle de films.
+
+
+
+### Vue-modèle `ViewModelMyMovies`
+ Ce vue-modèle hérite de la classe `ManageMyMovies.MVVM.ViewModels.ViewModelList<UserMovie, IDataContext>`.
+ Vue-modèle de la page de **gestion de sa liste personnelle de films**.
+ Ce vue-modèle permet notamment de : 
+  - Supprimer un film de sa liste personnelle
+  - Ajouter un film en favoris
+  - Notifier d'avoir déjà vu un film
+  - Sauvegarder les modifications apportée à un film (favoris, etc ...)
+  
+ 
+ > Il est à notter que le vue-modèle enfant appel automatiquement la méthode `LoadData()`. 
+ > Ici la méthode de chargement des données récupère les films du fichier de sauvegarde json.
+ 
+ #### Gestion des commandes `SearchCommand` et `DeleteCommand`
+ L'utilisateur doit pouvoir rechercher un film dans sa propre collection. 
+ Dans cette situation, plus besoin de faire appel au webservice Omdbapi, car on manipule les films du fichier de sauvegarde.
+ Ainsi, la commande `SearchCommand` va lui permettre de rechercher un film de sa collection en tappant le titre (ou un partie) dans une barre de recherche.
+ > La recherche s'éffectue que par le titre d'un film de sa collection.
+
+ De plus, l'utilisateur va pouvoir supprimer un film de sa liste.
+ > A chaque nouvelle suppression, on **sauvegarde automatiquement la collection** personnelle de films.
+ > Le contexte de donnée se resynchronise avec le nouveau fichier de sauvegarde (sans le film qui vient d'être supprimé).
+
+Enfin, l'utilisateur est en mesure d'ajouter des informations sur un film. Comme pouvoir dire qu'un film est dans ses favoris ou qu'il l'a déjà regardé.
+ > Pour enregistrer son film, il faut cliquer sur le bouton de sauvergarde.
+
+# Dans les prochaines versions...
+- **`Optimiser la recherche`**
+    - Pouvoir effetcuer une recherche plus avancée dans la partie `ViewModelSearch` (par speech, type de film, etc ...).
+    - Rendre fonctionnels tous les filtres dans la partie `ViewModelMyMovies` (par que la recherche par titre).
+
+- **`Optimiser la navigation des films`**
+    - Système de pagination ou de lazy loading pour afficher et charger qu'une partie des films. Ce qui permettra également de gagner en temps de chargment
+    
+- **`Meilleure personnalisation de ses films`**  
+    - Ajout d'un commentaire pour chaque film
+    - Ajout d'une notation personnalisée
+    
+- **`Renforcer le référencement`**  
+    - Faire en sorte que sa collection de films soit organisée de telle sorte à ce que les favoris ressortent vers les premiers résultats, mélangés avec les derniers films ajoutés. 
